@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SafeHarbor DeFi
 
-## Getting Started
+A **DeFi Treasury Manager** dashboard for startups: stablecoin runway, mocked protocol yields (Aave V3 / Compound V3), risk monitoring (“Vibe Shift”), and optional login/onboarding. Built for a clean, corporate light UI with dev-side market simulation controls.
 
-First, run the development server:
+## Features
+
+- **Treasury overview** — Total balance, stables vs. on-chain yield split, runway (balance ÷ monthly burn).
+- **Protocol rates** — Simulated supply APY with viem-style encodings; reference mainnet addresses for illustration.
+- **Risk monitor** — Alerts when stable prices fall below peg thresholds or Aave yield breaches configured floors.
+- **Simulation panel** — Collapsible dev controls: stable price sliders ($0.90–$1.10), Aave/Compound APY inputs, burn rate (updates UI live via Zustand).
+- **Auth UX** — `/login` with profile (name/email) stored in `sessionStorage`, header profile menu.
+
+## Stack
+
+- [Next.js 14](https://nextjs.org/) (App Router) · TypeScript  
+- [Tailwind CSS](https://tailwindcss.com/) · [shadcn/ui](https://ui.shadcn.com/)  
+- [TanStack Query](https://tanstack.com/query) · [Zustand](https://zustand-demo.pmnd.rs/) · [Wagmi](https://wagmi.sh/) / [Viem](https://viem.sh/)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Use **Dev settings** at the bottom of the dashboard to tweak mock prices and APYs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run start   # run production server
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment
 
-## Learn More
+Optional: `NEXT_PUBLIC_ETH_RPC_URL` for Wagmi’s default mainnet transport (mock reads do not require a wallet).
 
-To learn more about Next.js, take a look at the following resources:
+## Repository
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Remote: [github.com/Saad18819/SafeHarbor-DeFi](https://github.com/Saad18819/SafeHarbor-DeFi)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Demo-quality mocks only — production treasuries need real custody, compliance, and audited contracts.
